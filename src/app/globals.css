@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, sans-serif;
+
+  /* Brand palette — Brilliant red with warm gold accent & charcoal ink */
+  --color-brand-50: #fef2f2;
+  --color-brand-100: #fee2e2;
+  --color-brand-200: #fecaca;
+  --color-brand-300: #fca5a5;
+  --color-brand-400: #f56565;
+  --color-brand-500: #ec2d2d;
+  --color-brand-600: #dc1f1f;
+  --color-brand-700: #b91616;
+  --color-brand-800: #971515;
+  --color-brand-900: #7d1717;
+  --color-brand-950: #450808;
+
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f5a623;
+  --color-accent-600: #d98a0c;
+
+  --color-ink: #262321;
+
+  --shadow-glow: 0 20px 60px -15px rgba(220, 31, 31, 0.35);
+  --shadow-card: 0 10px 40px -12px rgba(38, 35, 33, 0.14);
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: var(--color-ink);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-brand-600);
+  color: #fff;
+}
+
+/* Utility: animated gradient text */
+.text-gradient {
+  background: linear-gradient(
+    120deg,
+    var(--color-brand-600),
+    var(--color-accent-500),
+    var(--color-brand-600)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Subtle dotted / grid backgrounds */
+.bg-grid {
+  background-image: radial-gradient(rgba(220, 31, 31, 0.1) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Animated gradient shimmer for headline text */
+.text-gradient {
+  background-size: 200% auto;
+  animation: shimmer 6s linear infinite;
+}
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Slow drifting decorative blobs */
+@keyframes drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -24px) scale(1.08);
+  }
+}
+.animate-drift {
+  animation: drift 14s ease-in-out infinite;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient,
+  .animate-drift,
+  .animate-float,
+  .animate-marquee {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Hide scrollbar for marquee rows */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
