@@ -192,7 +192,7 @@ export default function Home() {
       {/* Exams covered + image band */}
       <Section>
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <Reveal>
+          <Reveal className="min-w-0">
             <div className="relative overflow-hidden rounded-[2rem] shadow-card ring-1 ring-black/5">
               <Image
                 src="/images/library.png"
@@ -203,7 +203,7 @@ export default function Home() {
               />
             </div>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="min-w-0">
             <SectionHeading
               align="left"
               eyebrow="One fee, every exam"
@@ -214,7 +214,7 @@ export default function Home() {
               }
               subtitle="Coaching for all of these is included free, during college hours — so you never pay for separate tuition or run between two institutes."
             />
-            <div className="mt-8">
+            <div className="mt-8 min-w-0">
               <ExamsMarquee />
             </div>
             <Link

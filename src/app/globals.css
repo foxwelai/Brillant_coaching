@@ -4,18 +4,18 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, sans-serif;
 
-  /* Brand palette — Brilliant red with warm gold accent & charcoal ink */
-  --color-brand-50: #fef2f2;
-  --color-brand-100: #fee2e2;
-  --color-brand-200: #fecaca;
-  --color-brand-300: #fca5a5;
-  --color-brand-400: #f56565;
-  --color-brand-500: #ec2d2d;
-  --color-brand-600: #dc1f1f;
-  --color-brand-700: #b91616;
-  --color-brand-800: #971515;
-  --color-brand-900: #7d1717;
-  --color-brand-950: #450808;
+  /* Brand palette — Brilliant blue with warm gold accent & slate ink */
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+  --color-brand-950: #172554;
 
   --color-accent-50: #fffbeb;
   --color-accent-100: #fef3c7;
@@ -25,10 +25,10 @@
   --color-accent-500: #f5a623;
   --color-accent-600: #d98a0c;
 
-  --color-ink: #262321;
+  --color-ink: #16223a;
 
-  --shadow-glow: 0 20px 60px -15px rgba(220, 31, 31, 0.35);
-  --shadow-card: 0 10px 40px -12px rgba(38, 35, 33, 0.14);
+  --shadow-glow: 0 20px 60px -15px rgba(37, 99, 235, 0.35);
+  --shadow-card: 0 10px 40px -12px rgba(22, 34, 58, 0.14);
 }
 
 :root {
@@ -45,6 +45,10 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  /* Prevent horizontal scroll/jitter on mobile from decorative blobs etc.
+     `clip` doesn't create a scroll container, so the sticky header still works. */
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 ::selection {
@@ -67,7 +71,7 @@ body {
 
 /* Subtle dotted / grid backgrounds */
 .bg-grid {
-  background-image: radial-gradient(rgba(220, 31, 31, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
