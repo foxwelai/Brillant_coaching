@@ -54,6 +54,6 @@ export const nav = [
 export const stats = [
   { value: "1987", label: "Serving students since" },
   { value: "FREE", label: "Integrated coaching" },
-  { value: "Up to 100%", label: "Merit scholarships" },
+  { value: "100%", label: "Scholarships up to" },
   { value: "10+", label: "Competitive exams covered" },
 ];
